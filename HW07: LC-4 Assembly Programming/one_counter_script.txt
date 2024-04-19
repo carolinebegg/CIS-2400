@@ -1,0 +1,26 @@
+#########################################################
+#  file name   : one_counter_script.txt                   #
+#  author      : Caroline Begg
+#  description : PennSim script file to automate        #
+#                assembling, loading, reset, and PC set #
+#########################################################
+
+# clear the PennSim screen
+clear
+
+# reset PennSim Simulator (clears all memory/regs)
+reset
+
+# assemble one_counter.asm file into one_counter.obj file
+as one_counter one_counter
+
+# load one_counter.obj into program memory
+ld one_counter
+
+# set Program Counter register to 0, 
+# enabling us to fetch instruction at line 0 in program memory
+set PC 0
+set R0 47
+
+# once the PC = this label, it will stop the LC4
+break set END
